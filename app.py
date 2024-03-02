@@ -4,7 +4,7 @@
 # @Author: Haozhe Xie
 # @Date:   2024-03-02 16:30:00
 # @Last Modified by: Haozhe Xie
-# @Last Modified at: 2024-03-02 22:26:57
+# @Last Modified at: 2024-03-02 22:33:17
 # @Email:  root@haozhexie.com
 
 import streamlit as st
@@ -19,7 +19,7 @@ def setup_runtime_env():
 
 
 def get_models():
-    pass
+    return None, None
 
 
 def get_generated_city(radius, altitude, azimuth):
