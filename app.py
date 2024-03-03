@@ -4,7 +4,7 @@
 # @Author: Haozhe Xie
 # @Date:   2024-03-02 16:30:00
 # @Last Modified by: Haozhe Xie
-# @Last Modified at: 2024-03-03 12:21:20
+# @Last Modified at: 2024-03-03 16:01:01
 # @Email:  root@haozhexie.com
 
 import gradio as gr
@@ -51,6 +51,7 @@ def get_models(file_name):
     if torch.cuda.is_available():
         model = torch.nn.DataParallel(model).cuda().eval()
 
+    model.load_state_dict(ckpt["gancraft_g"], strict=False)
     return model
 
 
@@ -60,15 +61,17 @@ def get_city_layout():
     return hf, seg
 
 
-def get_generated_city(radius, altitude, azimuth):
+def get_generated_city(radius, altitude, azimuth, map_center):
     # The import must be done after CUDA extension compilation
     import citydreamer.inference
 
     return citydreamer.inference.generate_city(
         get_generated_city.fgm,
         get_generated_city.bgm,
-        get_generated_city.hf,
-        get_generated_city.seg,
+        get_generated_city.hf.copy(),
+        get_generated_city.seg.copy(),
+        map_center,
+        map_center,
         radius,
         altitude,
         azimuth,
@@ -89,6 +92,7 @@ def main(debug):
             gr.Slider(128, 512, value=320, step=5, label="Camera Radius (m)"),
             gr.Slider(256, 512, value=384, step=5, label="Camera Altitude (m)"),
             gr.Slider(0, 360, value=180, step=5, label="Camera Azimuth (°)"),
+            gr.Slider(1440, 6752, value=2656, step=5, label="Map Center (px)"),
         ],
         [gr.Image(type="numpy", label="Generated City")],
         title=title,

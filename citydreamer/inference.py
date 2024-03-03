@@ -4,7 +4,7 @@
 # @Author: Haozhe Xie
 # @Date:   2024-03-02 16:30:00
 # @Last Modified by: Haozhe Xie
-# @Last Modified at: 2024-03-03 12:10:18
+# @Last Modified at: 2024-03-03 15:59:00
 # @Email:  root@haozhexie.com
 
 import copy
@@ -53,7 +53,7 @@ CONSTANTS = {
 }
 
 
-def generate_city(fgm, bgm, hf, seg, radius, altitude, azimuth):
+def generate_city(fgm, bgm, hf, seg, cx, cy, radius, altitude, azimuth):
     cam_pos = get_orbit_camera_position(radius, altitude, azimuth)
     seg, building_stats = get_instance_seg_map(seg)
     # Generate latent codes
@@ -62,15 +62,6 @@ def generate_city(fgm, bgm, hf, seg, radius, altitude, azimuth):
         building_stats,
         bgm.module.cfg.NETWORK.GANCRAFT.STYLE_DIM,
         bgm.output_device,
-    )
-    # Random choose the center of the patch
-    cy = (
-        np.random.randint(seg.shape[0] - CONSTANTS["EXTENDED_VOL_SIZE"])
-        + CONSTANTS["EXTENDED_VOL_SIZE"] // 2
-    )
-    cx = (
-        np.random.randint(seg.shape[1] - CONSTANTS["EXTENDED_VOL_SIZE"])
-        + CONSTANTS["EXTENDED_VOL_SIZE"] // 2
     )
     # Generate local image patch of the height field and seg map
     part_hf, part_seg = get_part_hf_seg(hf, seg, cx, cy, CONSTANTS["EXTENDED_VOL_SIZE"])
@@ -98,9 +89,10 @@ def generate_city(fgm, bgm, hf, seg, radius, altitude, azimuth):
         bg_z,
         building_zs,
     )
-    return ((img.cpu().numpy().squeeze().transpose((1, 2, 0)) / 2 + 0.5) * 255).astype(
+    img = ((img.cpu().numpy().squeeze().transpose((1, 2, 0)) / 2 + 0.5) * 255).astype(
         np.uint8
     )
+    return img
 
 
 def get_orbit_camera_position(radius, altitude, azimuth):
