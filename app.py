@@ -4,7 +4,7 @@
 # @Author: Haozhe Xie
 # @Date:   2024-03-02 16:30:00
 # @Last Modified by: Haozhe Xie
-# @Last Modified at: 2024-03-03 10:25:43
+# @Last Modified at: 2024-03-03 10:39:25
 # @Email:  root@haozhexie.com
 
 import logging
@@ -68,8 +68,6 @@ def main(debug):
         desc = markdown[markdown.rfind("---") + 3:]
     with open("ARTICLE.md", "r") as f:
         arti = f.read()
-    with open("assets/style.css") as f:
-        css = f.read()
 
     app = gr.Interface(
         get_generated_city,
@@ -87,7 +85,6 @@ def main(debug):
         description=desc,
         article=arti,
         allow_flagging="never",
-        css=css,
     )
     app.queue(api_open=False)
     app.launch(debug=debug)
