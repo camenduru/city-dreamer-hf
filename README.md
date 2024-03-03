@@ -14,4 +14,4 @@ Official demo for **[CityDreamer: Compositional Generative Model of Unbounded 3D
 
 - 🔥 CityDreamer is a unbounded 3D city layout generator.
 - 🤗 Try CityDreamer to generate photolistic 3D cities.
-- ⚠️ Due to the limited computational resources at Hugging Face, this demo only generates **a single image** based on the New York City layout. If you wish to experience more comprehensive functionality, please visit the demo on [GitHub](https://github.com/hzxie/city-dreamer?tab=readme-ov-file#iterative-demo-%EF%B8%8F).
+- ⚠️ Due to the limited computational resources at Hugging Face, this demo only generates **A SINGLE IMAGE** based on the New York City layout. If you wish to experience more comprehensive functionality, please visit the demo on [GitHub](https://github.com/hzxie/city-dreamer?tab=readme-ov-file#iterative-demo-%EF%B8%8F).
