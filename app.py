@@ -4,7 +4,7 @@
 # @Author: Haozhe Xie
 # @Date:   2024-03-02 16:30:00
 # @Last Modified by: Haozhe Xie
-# @Last Modified at: 2024-03-03 12:02:23
+# @Last Modified at: 2024-03-03 12:21:20
 # @Email:  root@haozhexie.com
 
 import gradio as gr
@@ -105,7 +105,7 @@ if __name__ == "__main__":
         format="[%(levelname)s] %(asctime)s %(message)s", level=logging.INFO
     )
     logging.info("Compiling CUDA extensions...")
-    # setup_runtime_env()
+    setup_runtime_env()
 
     logging.info("Downloading pretrained models...")
     fgm = get_models("CityDreamer-Fgnd.pth")
