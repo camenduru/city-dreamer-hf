@@ -1,10 +1,10 @@
 ---
 title: CityDreamer
 emoji: 🏙️
-colorFrom: pink
-colorTo: indigo
-sdk: streamlit
-sdk_version: 1.31.1
+colorFrom: blue
+colorTo: green
+sdk: gradio
+sdk_version: 3.41.0
 app_file: app.py
 pinned: false
 license: other
