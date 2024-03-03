@@ -2,6 +2,9 @@
 torch==1.12.0
 torchvision
 
+easydict
+gradio
 numpy
 opencv-python
-gradio
+pillow
+
