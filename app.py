@@ -4,7 +4,7 @@
 # @Author: Haozhe Xie
 # @Date:   2024-03-02 16:30:00
 # @Last Modified by: Haozhe Xie
-# @Last Modified at: 2024-03-03 16:01:01
+# @Last Modified at: 2024-03-03 16:08:25
 # @Email:  root@haozhexie.com
 
 import gradio as gr
@@ -89,10 +89,10 @@ def main(debug):
     app = gr.Interface(
         get_generated_city,
         [
-            gr.Slider(128, 512, value=320, step=5, label="Camera Radius (m)"),
-            gr.Slider(256, 512, value=384, step=5, label="Camera Altitude (m)"),
-            gr.Slider(0, 360, value=180, step=5, label="Camera Azimuth (°)"),
-            gr.Slider(1440, 6752, value=2656, step=5, label="Map Center (px)"),
+            gr.Slider(128, 512, value=343, step=5, label="Camera Radius (m)"),
+            gr.Slider(256, 512, value=296, step=5, label="Camera Altitude (m)"),
+            gr.Slider(0, 360, value=60, step=5, label="Camera Azimuth (°)"),
+            gr.Slider(1440, 6752, value=3970, step=5, label="Map Center (px)"),
         ],
         [gr.Image(type="numpy", label="Generated City")],
         title=title,

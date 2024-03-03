@@ -19,7 +19,7 @@ If our work is useful for your research, please consider citing:
 This project is licensed under [S-Lab License 1.0](https://huggingface.co/hzxie/city-dreamer/blob/main/LICENSE).
 Redistribution and use for non-commercial purposes should follow this license.
 
-🤗 **Find Me:**
+##### Find Me 🤗
 
 <a href="https://github.com/hzxie">
   <img style="display: inline-block; margin-right: 20px" src="https://img.shields.io/github/followers/hzxie">
